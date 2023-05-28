@@ -262,6 +262,7 @@ List<BankUssd> fidelityBank = [
   BankUssd(code: "*770*2#", description: "Choose SMS and Email Alert"),
   BankUssd(code: "*770*02#", description: "Update BVN")
 ];
+List<BankUssd> polarisBank = [];
 
 List<BankUssd> getbank(String bankName) {
   if (bankName == 'First Bank') {
