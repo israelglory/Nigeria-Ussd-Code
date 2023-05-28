@@ -36,8 +36,13 @@ class UssdListItem extends StatelessWidget {
                     children: [
                       AppText(
                         description,
+                        size: 18,
+                        fontWeight: FontWeight.w700,
                       ),
-                      AppText(code),
+                      AppText(
+                        code,
+                        size: 18,
+                      ),
                     ],
                   ),
                 ),

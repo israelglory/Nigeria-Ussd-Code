@@ -30,7 +30,10 @@ class HomeItem extends StatelessWidget {
               const SizedBox(
                 height: 16.0,
               ),
-              AppText(text),
+              AppText(
+                text,
+                fontWeight: FontWeight.bold,
+              ),
             ],
           ),
         ),
@@ -73,7 +76,10 @@ class HomeItemLong extends StatelessWidget {
                 const SizedBox(
                   height: 16.0,
                 ),
-                AppText(text),
+                AppText(
+                  text,
+                  fontWeight: FontWeight.bold,
+                ),
               ],
             ),
           ),
