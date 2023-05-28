@@ -1,5 +1,6 @@
 import 'package:nigeria_ussd_codes/features/bank_swift/bank_swift_view.dart';
 import 'package:nigeria_ussd_codes/features/banks/bank_home/bank_home_view.dart';
+import 'package:nigeria_ussd_codes/features/confirm_network/confirm_network_view.dart';
 import 'package:nigeria_ussd_codes/features/general_code.dart/general_ussd_view.dart';
 import 'package:nigeria_ussd_codes/features/home/home_controller.dart';
 import 'package:nigeria_ussd_codes/features/networks/network_ussd_view.dart';
@@ -116,6 +117,16 @@ class HomeView extends StatelessWidget {
                         },
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  HomeItemLong(
+                    text: 'Confirm Network',
+                    image: AppAssets.phone,
+                    onTap: () {
+                      Get.to(() => const ConfirmNetworkView());
+                    },
                   ),
                 ],
               ),

@@ -7,6 +7,7 @@ class AppAssets {
   static const String bank = 'assets/images/banks.jpeg';
   static const String swiftCode = 'assets/images/swift.jpg';
   static const String general = 'assets/images/general.jpeg';
+  static const String phone = 'assets/images/phone.jpeg';
 
   ///Banks Logo
   static const String firstBank = 'assets/images/firstbank-logo.png';
@@ -18,4 +19,8 @@ class AppAssets {
   static const String ubaBank = 'assets/images/uba.png';
   static const String unionBank = 'assets/images/union.png';
   static const String fidelityBank = 'assets/images/fidelity.png';
+  static const String polarisBank = 'assets/images/polaris.jpeg';
+  static const String sterlingBank = 'assets/images/sterling.jpeg';
+  static const String wemaBank = 'assets/images/wema.jpeg';
+  static const String stanbicBank = 'assets/images/stanbic.jpeg';
 }

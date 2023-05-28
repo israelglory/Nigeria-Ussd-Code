@@ -19,86 +19,116 @@ class BankHomeView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(
                   top: 32.0, right: 40.0, left: 40, bottom: 32.0),
-              child: Container(
-                child: GridView.count(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  //maxCrossAxisExtent: 300,
-                  childAspectRatio: 2 / 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  crossAxisCount: 2,
-                  children: [
-                    ListItem(
-                      image: AppAssets.firstBank,
-                      onTap: () {
-                        Get.to(
-                            () => const BankCodeView(bankName: 'First Bank'));
-                      },
-                      text: 'First Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.fcmbBank,
-                      onTap: () {
-                        Get.to(() => const BankCodeView(bankName: 'FCMB'));
-                      },
-                      text: 'FCMB Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.gtBank,
-                      onTap: () {
-                        Get.to(() => const BankCodeView(bankName: 'GTB'));
-                      },
-                      text: 'GT Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.accessBank,
-                      onTap: () {
-                        Get.to(
-                            () => const BankCodeView(bankName: 'Access Bank'));
-                      },
-                      text: 'Access Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.ecoBank,
-                      onTap: () {
-                        Get.to(() => const BankCodeView(bankName: 'Eco Bank'));
-                      },
-                      text: 'Eco Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.ubaBank,
-                      onTap: () {
-                        Get.to(() => const BankCodeView(bankName: 'UBA Bank'));
-                      },
-                      text: 'UBA Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.unionBank,
-                      onTap: () {
-                        Get.to(
-                            () => const BankCodeView(bankName: 'Union Bank'));
-                      },
-                      text: 'Union Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.fidelityBank,
-                      onTap: () {
-                        Get.to(() =>
-                            const BankCodeView(bankName: 'Fidelity Bank'));
-                      },
-                      text: 'Fidelity Bank',
-                    ),
-                    ListItem(
-                      image: AppAssets.zenithBank,
-                      onTap: () {
-                        Get.to(() => const BankCodeView(bankName: "Zenith"));
-                      },
-                      text: 'Zenith Bank',
-                    ),
-                  ],
-                ),
+              child: GridView.count(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                //maxCrossAxisExtent: 300,
+                childAspectRatio: 2 / 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                crossAxisCount: 2,
+                children: [
+                  ListItem(
+                    image: AppAssets.firstBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'First Bank'));
+                    },
+                    text: 'First Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.fcmbBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'FCMB'));
+                    },
+                    text: 'FCMB Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.gtBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'GTB'));
+                    },
+                    text: 'GT Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.accessBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Access Bank'));
+                    },
+                    text: 'Access Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.ecoBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Eco Bank'));
+                    },
+                    text: 'Eco Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.polarisBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Polaris'));
+                    },
+                    text: 'Polaris Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.ubaBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'UBA Bank'));
+                    },
+                    text: 'UBA Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.stanbicBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Stanbic'));
+                    },
+                    text: 'Stanbic IBTC Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.wemaBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Wema'));
+                    },
+                    text: 'Wema Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.sterlingBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Sterling'));
+                    },
+                    text: 'Sterling Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.unionBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: 'Union Bank'));
+                    },
+                    text: 'Union Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.fidelityBank,
+                    onTap: () {
+                      Get.to(
+                          () => const BankCodeView(bankName: 'Fidelity Bank'));
+                    },
+                    text: 'Fidelity Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.zenithBank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: "Zenith"));
+                    },
+                    text: 'Zenith Bank',
+                  ),
+                  ListItem(
+                    image: AppAssets.bank,
+                    onTap: () {
+                      Get.to(() => const BankCodeView(bankName: "Others"));
+                    },
+                    text: 'Other Banks Code',
+                  ),
+                ],
               ),
             ),
           ),
@@ -140,7 +170,7 @@ class ListItem extends StatelessWidget {
               ),
               AppText(
                 text,
-                size: 20,
+                size: 18,
                 fontWeight: FontWeight.w700,
               ),
             ],

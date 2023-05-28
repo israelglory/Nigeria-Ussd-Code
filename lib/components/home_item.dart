@@ -79,6 +79,7 @@ class HomeItemLong extends StatelessWidget {
                 AppText(
                   text,
                   fontWeight: FontWeight.bold,
+                  size: 14,
                 ),
               ],
             ),

@@ -184,6 +184,7 @@ List<BankUssd> zenith = [
     description: 'Increase daily transaction limit',
   ),
 ];
+
 List<BankUssd> accessBank = [
   BankUssd(
     code: "*901#",
@@ -214,6 +215,7 @@ List<BankUssd> accessBank = [
     description: 'Generate OTP',
   ),
 ];
+
 List<BankUssd> ecoBank = [
   BankUssd(code: "*326#", description: "General Ussd Service"),
   BankUssd(code: "*326*0#", description: "Check balance"),
@@ -221,6 +223,7 @@ List<BankUssd> ecoBank = [
   BankUssd(code: "*326#", description: "For Xpress loan"),
   BankUssd(code: "*326#", description: "To reset PIN")
 ];
+
 List<BankUssd> ubaBank = [
   BankUssd(code: '*919*00#', description: 'Check balance'),
   BankUssd(code: '*919*14#', description: 'Buy data for self'),
@@ -240,6 +243,7 @@ List<BankUssd> ubaBank = [
   BankUssd(code: "*919*27*2#", description: "Oak pensions"),
   BankUssd(code: "*919*27*1#", description: "ARM pensions")
 ];
+
 List<BankUssd> unionBank = [
   BankUssd(code: '*826*4#', description: "Check Balance"),
   BankUssd(code: "*826*9#", description: "Buy Data"),
@@ -252,6 +256,7 @@ List<BankUssd> unionBank = [
   BankUssd(code: "*826*19#", description: "Locate a Union Bank Branch"),
   BankUssd(code: "*826*21#", description: "Unblock ATM Card")
 ];
+
 List<BankUssd> fidelityBank = [
   BankUssd(code: "*770#", description: "General USSD Service"),
   BankUssd(code: "*770*0#", description: "Check balance"),
@@ -262,7 +267,62 @@ List<BankUssd> fidelityBank = [
   BankUssd(code: "*770*2#", description: "Choose SMS and Email Alert"),
   BankUssd(code: "*770*02#", description: "Update BVN")
 ];
-List<BankUssd> polarisBank = [];
+
+List<BankUssd> polarisBank = [
+  BankUssd(code: "*833#", description: "Smart USSD code"),
+  BankUssd(code: "*833*1#", description: "Open an account"),
+  BankUssd(code: "*833*2#", description: "Pay bills"),
+  BankUssd(code: "*833*3#", description: "Transfer Funds"),
+  BankUssd(code: "*833*5#", description: "Update BVN"),
+  BankUssd(code: "*833*6#", description: "Check balance"),
+  BankUssd(code: "*833*4#", description: "Hotlist card"),
+  BankUssd(code: "*833*7#", description: "Pay with MasterPass"),
+];
+
+List<BankUssd> sterlingBank = [
+  BankUssd(code: "*822*6#", description: "Check Balance"),
+  BankUssd(code: "*822*2#", description: "Pay Bills"),
+  BankUssd(code: "*822*42#", description: "Cardless Withdrawal"),
+  BankUssd(code: "*822*7#", description: "Open Account"),
+  BankUssd(code: "*822*8#", description: "Check Account Number"),
+  BankUssd(code: "*822*19#", description: "Card Management"),
+  BankUssd(code: "*822*15#", description: "LCC Toll Payment"),
+  BankUssd(code: "*565*0#", description: "Retrieve BVN")
+];
+
+List<BankUssd> wemaBank = [
+  BankUssd(code: "*945*0#", description: "Balance Enquiry"),
+  BankUssd(code: "*945*00#", description: "Change USSD pin "),
+  BankUssd(code: "*945*1#", description: "Open an account"),
+  BankUssd(
+      code: "*945*01#",
+      description: "Register account with USSD wema bank transfer code"),
+  BankUssd(code: "*945*5#", description: "Account reactivation"),
+  BankUssd(code: "*945*000#", description: "Check your account"),
+  BankUssd(code: "*945*4#", description: "Manage your BVN"),
+  BankUssd(code: "*945*911#", description: "Account restrictions")
+];
+
+List<BankUssd> stanbicBank = [
+  BankUssd(code: "*909*0#", description: "Account Opening"),
+  BankUssd(code: "*909*1*1#", description: "Check Balance"),
+  BankUssd(code: "*565*0#", description: "Retrieve BVN"),
+  BankUssd(code: "*909*Amount#", description: "Airtime Top Up Self"),
+  BankUssd(
+      code: "*909*22*Amount*Account Number#",
+      description: "Transfer to Other Banks"),
+  BankUssd(
+      code: "*909*11*Amount*Account Number#",
+      description: "Transfer to Stanbic Account"),
+  BankUssd(code: "*909#", description: "Pay Cable Bills")
+];
+
+List<BankUssd> otherBank = [
+  BankUssd(code: "*426#", description: "Diamond Bank USSD Code"),
+  BankUssd(code: "*322#", description: "Heritage Bank USSD Code"),
+  BankUssd(code: "*7111#", description: "KeyStone Bank USSD Code"),
+  BankUssd(code: "*7799#", description: "Unity Bank USSD Code"),
+];
 
 List<BankUssd> getbank(String bankName) {
   if (bankName == 'First Bank') {
@@ -290,7 +350,22 @@ List<BankUssd> getbank(String bankName) {
     return unionBank;
   }
   if (bankName == 'Fidelity Bank') {
-    return unionBank;
+    return fidelityBank;
+  }
+  if (bankName == 'Polaris') {
+    return polarisBank;
+  }
+  if (bankName == 'Sterling') {
+    return sterlingBank;
+  }
+  if (bankName == 'Wema') {
+    return wemaBank;
+  }
+  if (bankName == 'Stanbic') {
+    return stanbicBank;
+  }
+  if (bankName == 'Others') {
+    return otherBank;
   }
   return [];
 }
@@ -322,6 +397,21 @@ String getBankLogo(String bankName) {
   }
   if (bankName == 'Fidelity Bank') {
     return AppAssets.fidelityBank;
+  }
+  if (bankName == 'Polaris') {
+    return AppAssets.polarisBank;
+  }
+  if (bankName == 'Sterling') {
+    return AppAssets.sterlingBank;
+  }
+  if (bankName == 'Wema') {
+    return AppAssets.wemaBank;
+  }
+  if (bankName == 'Stanbic') {
+    return AppAssets.stanbicBank;
+  }
+  if (bankName == 'Others') {
+    return AppAssets.bank;
   }
   return '';
 }
