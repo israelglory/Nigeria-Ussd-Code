@@ -1,38 +1,29 @@
 import 'package:flutter/services.dart';
 import 'package:nigeria_ussd_codes/components/list_item.dart';
-import 'package:nigeria_ussd_codes/features/networks/network_controller.dart';
-import 'package:nigeria_ussd_codes/utils/exports.dart';
+import 'package:nigeria_ussd_codes/features/bank_swift/bank_swift_controller.dart';
 
-import '../../utils/utils.dart';
+import '../../utils/exports.dart';
 
-class NetworkUssdView extends StatelessWidget {
-  final String network;
-  const NetworkUssdView({super.key, required this.network});
+class BankSwiftView extends StatelessWidget {
+  const BankSwiftView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final image = network == 'MTN'
-        ? AppAssets.mtnLogo
-        : network == 'Airtel'
-            ? AppAssets.airtelLogo
-            : network == 'Glo'
-                ? AppAssets.gloLogo
-                : AppAssets.etisalatLogo;
-    return GetBuilder<NetworkContoller>(
-      init: NetworkContoller(),
+    return GetBuilder<BankSwiftController>(
+      init: BankSwiftController(),
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: AppText('$network USSD'),
+            title: const AppText('Bank Swift Code'),
           ),
           body: Column(
             children: [
               const SizedBox(
                 height: 32.0,
               ),
-              CircleAvatar(
-                backgroundImage: AssetImage(image),
+              const CircleAvatar(
+                backgroundImage: AssetImage(AppAssets.swiftCode),
                 radius: 40,
               ),
               const SizedBox(
@@ -45,10 +36,8 @@ class NetworkUssdView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final ussd = controller.ussdList[index];
                     return UssdListItem(
-                        onCall: () {
-                          String no = Uri.encodeComponent(ussd.code);
-                          launchUrlStart(url: 'tel://$no');
-                        },
+                        showCall: false,
+                        onCall: () {},
                         onCopy: () async {
                           await Clipboard.setData(
                                   ClipboardData(text: ussd.code))

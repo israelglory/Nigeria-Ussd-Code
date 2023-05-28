@@ -5,12 +5,14 @@ class UssdListItem extends StatelessWidget {
   final Function() onCopy;
   final String code;
   final String description;
+  final bool showCall;
   const UssdListItem(
       {super.key,
       required this.onCall,
       required this.onCopy,
       required this.code,
-      required this.description});
+      required this.description,
+      this.showCall = true});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,10 @@ class UssdListItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                GestureDetector(onTap: onCall, child: const Icon(Icons.call)),
+                Visibility(
+                    visible: showCall,
+                    child: GestureDetector(
+                        onTap: onCall, child: const Icon(Icons.call))),
                 const SizedBox(
                   width: 16.0,
                 ),

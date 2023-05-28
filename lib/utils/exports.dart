@@ -6,3 +6,4 @@ export 'package:get/get.dart';
 export 'package:nigeria_ussd_codes/components/home_item.dart';
 export 'package:nigeria_ussd_codes/components/avatar.dart';
 export 'package:nigeria_ussd_codes/constants/app_assets.dart';
+export 'package:nigeria_ussd_codes/models/bank_ussd_model.dart';

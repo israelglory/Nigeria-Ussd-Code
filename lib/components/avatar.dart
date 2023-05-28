@@ -53,7 +53,7 @@ class Avatar extends StatelessWidget {
                   placeholder: (context, url) =>
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) {
-                    return Image.asset('assets/images/placeholderDp.jpg');
+                    return Image.asset('assets/images/banks.jpeg');
                   },
                 )
               : Image.asset(url)),

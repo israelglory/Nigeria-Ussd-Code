@@ -1,30 +1,31 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nigeria_ussd_codes/components/list_item.dart';
-import 'package:nigeria_ussd_codes/features/networks/network_controller.dart';
-import 'package:nigeria_ussd_codes/utils/exports.dart';
+import 'package:nigeria_ussd_codes/data/banks_data.dart';
+import 'package:nigeria_ussd_codes/features/banks/bank_code_view/bank_code_controller.dart';
+import 'package:nigeria_ussd_codes/utils/utils.dart';
 
-import '../../utils/utils.dart';
+import '../../../utils/exports.dart';
 
-class NetworkUssdView extends StatelessWidget {
-  final String network;
-  const NetworkUssdView({super.key, required this.network});
+class BankCodeView extends StatelessWidget {
+  final String bankName;
+  const BankCodeView({super.key, required this.bankName});
 
   @override
   Widget build(BuildContext context) {
-    final image = network == 'MTN'
-        ? AppAssets.mtnLogo
-        : network == 'Airtel'
-            ? AppAssets.airtelLogo
-            : network == 'Glo'
-                ? AppAssets.gloLogo
-                : AppAssets.etisalatLogo;
-    return GetBuilder<NetworkContoller>(
-      init: NetworkContoller(),
+    return GetBuilder<BankCodeController>(
+      init: BankCodeController(),
+      initState: (state) {
+        state.controller?.update();
+      },
       builder: (controller) {
+        List<BankUssd> ussdList = getbank(bankName);
+        print(ussdList.length);
+        final bankLogo = getBankLogo(bankName);
         return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: AppText('$network USSD'),
+            title: AppText('$bankName USSD'),
           ),
           body: Column(
             children: [
@@ -32,7 +33,7 @@ class NetworkUssdView extends StatelessWidget {
                 height: 32.0,
               ),
               CircleAvatar(
-                backgroundImage: AssetImage(image),
+                backgroundImage: AssetImage(bankLogo),
                 radius: 40,
               ),
               const SizedBox(
@@ -43,7 +44,7 @@ class NetworkUssdView extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    final ussd = controller.ussdList[index];
+                    final ussd = ussdList[index];
                     return UssdListItem(
                         onCall: () {
                           String no = Uri.encodeComponent(ussd.code);
@@ -70,7 +71,7 @@ class NetworkUssdView extends StatelessWidget {
                       height: 16.0,
                     );
                   },
-                  itemCount: controller.ussdList.length,
+                  itemCount: ussdList.length,
                 ),
               ),
             ],
