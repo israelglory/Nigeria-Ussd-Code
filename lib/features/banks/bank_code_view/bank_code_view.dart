@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:nigeria_ussd_codes/components/list_item.dart';
 import 'package:nigeria_ussd_codes/data/banks_data.dart';
 import 'package:nigeria_ussd_codes/features/banks/bank_code_view/bank_code_controller.dart';
@@ -27,53 +28,66 @@ class BankCodeView extends StatelessWidget {
             centerTitle: true,
             title: AppText('$bankName USSD'),
           ),
-          body: Column(
+          body: Stack(
             children: [
-              const SizedBox(
-                height: 32.0,
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 32.0,
+                  ),
+                  CircleAvatar(
+                    backgroundImage: AssetImage(bankLogo),
+                    radius: 40,
+                  ),
+                  const SizedBox(
+                    height: 32.0,
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final ussd = ussdList[index];
+                        return UssdListItem(
+                            onCall: () {
+                              String no = Uri.encodeComponent(ussd.code);
+                              launchUrlStart(url: 'tel://$no');
+                            },
+                            onCopy: () async {
+                              await Clipboard.setData(
+                                      ClipboardData(text: ussd.code))
+                                  .then(
+                                (value) => Get.snackbar(
+                                  'Text Copied',
+                                  ussd.code,
+                                  backgroundColor: AppColors.primaryColor,
+                                  colorText: Colors.white,
+                                  snackPosition: SnackPosition.TOP,
+                                ),
+                              );
+                            },
+                            code: ussd.code,
+                            description: ussd.description);
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          height: 16.0,
+                        );
+                      },
+                      itemCount: ussdList.length,
+                    ),
+                  ),
+                ],
               ),
-              CircleAvatar(
-                backgroundImage: AssetImage(bankLogo),
-                radius: 40,
-              ),
-              const SizedBox(
-                height: 32.0,
-              ),
-              Expanded(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    final ussd = ussdList[index];
-                    return UssdListItem(
-                        onCall: () {
-                          String no = Uri.encodeComponent(ussd.code);
-                          launchUrlStart(url: 'tel://$no');
-                        },
-                        onCopy: () async {
-                          await Clipboard.setData(
-                                  ClipboardData(text: ussd.code))
-                              .then(
-                            (value) => Get.snackbar(
-                              'Text Copied',
-                              ussd.code,
-                              backgroundColor: AppColors.primaryColor,
-                              colorText: Colors.white,
-                              snackPosition: SnackPosition.TOP,
-                            ),
-                          );
-                        },
-                        code: ussd.code,
-                        description: ussd.description);
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      height: 16.0,
-                    );
-                  },
-                  itemCount: ussdList.length,
+              if (controller.isBannerAdReady)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    width: controller.bannerAd.size.width.toDouble(),
+                    height: controller.bannerAd.size.height.toDouble(),
+                    child: AdWidget(ad: controller.bannerAd),
+                  ),
                 ),
-              ),
             ],
           ),
         );

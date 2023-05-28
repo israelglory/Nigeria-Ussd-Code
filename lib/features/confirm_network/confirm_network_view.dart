@@ -1,3 +1,4 @@
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:nigeria_ussd_codes/data/confirm_network_data.dart';
 import 'package:nigeria_ussd_codes/features/confirm_network/confirm_network_controller.dart';
 import 'package:nigeria_ussd_codes/utils/exports.dart';
@@ -16,33 +17,46 @@ class ConfirmNetworkView extends StatelessWidget {
           appBar: AppBar(
             title: const AppText('Confirm Network'),
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          body: Stack(
             children: [
-              AppText(
-                'Select Phone Number Prefix',
-                size: 14,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppText(
+                    'Select Phone Number Prefix',
+                    size: 14,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  CustomDropDown(
+                    value: controller.selectedValue,
+                    itemsList: confirmNetworkList,
+                    dropdownColor: Colors.white,
+                    onChanged: (value) {
+                      controller.onSelected(value);
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  AppText(
+                    controller.selectedValue.network,
+                    size: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 5,
-              ),
-              CustomDropDown(
-                value: controller.selectedValue,
-                itemsList: confirmNetworkList,
-                dropdownColor: Colors.white,
-                onChanged: (value) {
-                  controller.onSelected(value);
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              AppText(
-                controller.selectedValue.network,
-                size: 25,
-                fontWeight: FontWeight.bold,
-              ),
+              if (controller.isBannerAdReady)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    width: controller.bannerAd.size.width.toDouble(),
+                    height: controller.bannerAd.size.height.toDouble(),
+                    child: AdWidget(ad: controller.bannerAd),
+                  ),
+                ),
             ],
           ),
         );

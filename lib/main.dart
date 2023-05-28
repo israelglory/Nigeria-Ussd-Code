@@ -1,9 +1,12 @@
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'package:nigeria_ussd_codes/features/home/home_view.dart';
 import 'package:nigeria_ussd_codes/utils/exports.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 
