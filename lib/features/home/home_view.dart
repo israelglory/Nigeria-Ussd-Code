@@ -5,6 +5,7 @@ import 'package:nigeria_ussd_codes/features/general_code.dart/general_ussd_view.
 import 'package:nigeria_ussd_codes/features/home/home_controller.dart';
 import 'package:nigeria_ussd_codes/features/networks/network_ussd_view.dart';
 import 'package:nigeria_ussd_codes/utils/exports.dart';
+import 'package:nigeria_ussd_codes/utils/utils.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -18,6 +19,34 @@ class HomeView extends StatelessWidget {
           appBar: AppBar(
             title: const AppText('Nigeria USSD Code'),
             centerTitle: true,
+            actions: [
+              //I need a popup menu here
+              PopupMenuButton(
+                itemBuilder: (context) {
+                  return [
+                    const PopupMenuItem(
+                      value: 'privacy',
+                      child: AppText('Privacy Policy'),
+                    ),
+                    const PopupMenuItem(
+                      value: 'terms',
+                      child: AppText('Terms and Conditions'),
+                    ),
+                  ];
+                },
+                onSelected: (value) {
+                  if (value == 'privacy') {
+                    launchUrlStart(
+                        url:
+                            'https://sites.google.com/view/nigeria-ussd-codes/home');
+                  } else if (value == 'terms') {
+                    launchUrlStart(
+                        url:
+                            'https://sites.google.com/view/nuc-terms-and-condition/home');
+                  }
+                },
+              ),
+            ],
           ),
           body: SingleChildScrollView(
             child: Padding(

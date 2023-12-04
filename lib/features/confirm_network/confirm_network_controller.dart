@@ -12,6 +12,7 @@ class ConfirmNetworkController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+
     _loadBannerAd();
   }
 

@@ -23,11 +23,11 @@ class ConfirmNetworkView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppText(
+                  const AppText(
                     'Select Phone Number Prefix',
                     size: 14,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   CustomDropDown(
@@ -38,7 +38,7 @@ class ConfirmNetworkView extends StatelessWidget {
                       controller.onSelected(value);
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   AppText(

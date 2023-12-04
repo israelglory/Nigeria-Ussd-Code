@@ -40,6 +40,8 @@ dependencies:
   cached_network_image: ^3.2.3
   google_fonts:
   google_mobile_ads: ^3.0.0
+  device_preview: ^1.1.0
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.1
   change_app_package_name: ^1.1.0
+  
 
 flutter_icons:
   image_path: "assets/images/logo.png" 
@@ -60,6 +63,16 @@ flutter_icons:
   ios: true
   # optionally, as transparency is not allowed on app store
   remove_alpha_ios: true
+
+
+flutter_native_splash:
+  image: assets/images/logo.png
+  android_disable_fullscreen: true
+  color: "#ffffff"
+  android_gravity: center
+  android: true
+  ios: true
+  web: false
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
